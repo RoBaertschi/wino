@@ -1,0 +1,4 @@
+#cmakedefine HAVE_UNISTD_H 1
+#define wino_VERSION_MAJOR @wino_VERSION_MAJOR@
+#define wino_VERSION_MINOR @wino_VERSION_MINOR@
+#define wino_VERSION_PATCH @wino_VERSION_PATCH@
