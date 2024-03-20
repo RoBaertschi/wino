@@ -5,7 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 
-void randname(char *buf) {
+static void randname(char *buf) {
   struct timespec ts;
   clock_gettime(CLOCK_REALTIME, &ts);
   long r = ts.tv_nsec;
@@ -15,7 +15,7 @@ void randname(char *buf) {
   }
 }
 
-int create_shm_file() {
+int wino_create_shm_file() {
   int retries = 100;
   do {
     char name[] = "/wl_shm-XXXXXX";
@@ -33,8 +33,8 @@ int create_shm_file() {
   return -1;
 }
 
-int allocate_shm_file(size_t size) {
-  int fd = create_shm_file();
+int wino_allocate_shm_file(size_t size) {
+  int fd = wino_create_shm_file();
   if (fd < 0) {
     return -1;
   }

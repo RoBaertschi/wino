@@ -38,7 +38,7 @@ static struct wl_buffer* draw_frame(struct state *state) {
   const int stride = width * 4;
   const int shm_pool_size = height * stride;
 
-  int fd = allocate_shm_file((size_t) shm_pool_size);
+  int fd = wino_allocate_shm_file((size_t) shm_pool_size);
 
   if (fd == -1) return NULL;
 

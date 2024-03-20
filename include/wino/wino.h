@@ -6,12 +6,17 @@
 #define _POSIX
 #endif
 
+
+
+
+
 #include <stdlib.h>
 
 #ifdef _POSIX
 
-int create_shm_file(void);
-int allocate_shm_file(size_t size);
+// Posix Utils, TODO: Maybe move to a diffrent header for internals or platfrom specific stuff
+int wino_create_shm_file(void);
+int wino_allocate_shm_file(size_t size);
 
 #endif // _POSIX
 
