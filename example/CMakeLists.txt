@@ -6,7 +6,6 @@ target_include_directories(
   wayland_protocol_learn PRIVATE "${wino_SOURCE_DIR}/example"
                                  "${wino_BINARY_DIR}/example")
 
-message("${wino_BINARY_DIR}")
 
 macro(generate_wayland_protocol protocol_file)
   set(protocol_path "${wino_SOURCE_DIR}/deps/wayland/${protocol_file}")

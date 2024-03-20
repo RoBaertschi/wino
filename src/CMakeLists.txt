@@ -11,7 +11,6 @@ target_include_directories(
          ${CMAKE_CURRENT_BINARY_DIR}
          "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
-message("${CMAKE_CURRENT_BINARY_DIR}")
 
 target_include_directories(wino PRIVATE "${wino_SOURCE_DIR}/src"
                                         "${CMAKE_CURRENT_BINARY_DIR}")
