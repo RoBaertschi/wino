@@ -8,7 +8,6 @@
 #define _POSIX
 #endif
 
-#include <stdlib.h>
 
 /*##############################
 ||                            ||
@@ -16,7 +15,7 @@
 ||                            ||
 ##############################*/
 
-
+// X macro for all window backends, may be useful for additions to the project
 #define WINO_WINDOW_BACKENDS(_X) \
 _X(0, "wayland", WAYLAND)
 
@@ -28,6 +27,7 @@ typedef enum wino_window_backend {
 
 #undef _WINDOW_BACKENDS_ENUM
 
+// This is open, so anyone can use the stuff provided if needed. Also removes the need for additional API functions
 typedef struct wino_window {
   wino_window_backend backend;
   union {
@@ -54,6 +54,8 @@ char* wino_window_backend_to_string(wino_window_backend backend);
 #ifdef _POSIX
 
 // Posix Utils, TODO: Maybe move to a diffrent header for internals or platfrom specific stuff
+//
+// Useful for wayland to create a shared memory blob. But could be maybe also used for diffrent stuff.
 int wino_create_shm_file(void);
 int wino_allocate_shm_file(size_t size);
 
