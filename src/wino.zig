@@ -1,14 +1,11 @@
-pub const Window = @import("window.zig");
+pub const Window = @import("Window.zig");
 pub const EventLoop = @import("EventLoop.zig");
 pub const math = @import("math.zig");
 
 const std = @import("std");
 const builtin = @import("builtin");
 
-const SupportedPlatforms = enum { windows };
-const PlatformError = union(SupportedPlatforms) {
-    windows: @import("win32").foundation.WIN32_ERROR,
-};
+const SupportedPlatforms = enum { windows, linux };
 
 pub const Context = struct {
     initalized: bool = false,
@@ -24,7 +21,13 @@ pub const Context = struct {
 
 pub const platform: SupportedPlatforms = switch (builtin.os.tag) {
     .windows => .windows,
+    .linux => .linux,
     else => @compileError("Unsupported wino backend " ++ @tagName(builtin.os.tag)),
+};
+
+const PlatformError = switch (platform) {
+    .windows => @import("win32").foundation.WIN32_ERROR,
+    .linux => i32,
 };
 
 fn errorPrinting() void {
@@ -53,6 +56,7 @@ pub fn init(allocator: std.mem.Allocator, out: std.fs.File, platformErrorLogging
     return Context{
         .platformError = switch (platform) {
             .windows => .{ .windows = .NO_ERROR },
+            .linux => 0,
         },
         .initalized = true,
         .out = out,

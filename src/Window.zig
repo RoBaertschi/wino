@@ -13,6 +13,7 @@ const WindowBackendEnum = enum { windows };
 
 const WindowBackend = switch (wino.platform) {
     .windows => @import("platform/windows/WindowsWindow.zig"),
+    .linux => @import("platform/linux/LinuxWindow.zig"),
 };
 
 pub const CreateWindowError = WindowBackend.BackendCreateError;
@@ -29,6 +30,7 @@ pub inline fn create(context: *wino.Context, options: Options) CreateWindowError
 
     window.* = .{
         .backend = try WindowBackend.create(context, options, window),
+        .event_loop = wino.EventLoop.init(context.allocator),
     };
 
     return window;

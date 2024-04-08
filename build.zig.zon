@@ -19,6 +19,10 @@
             .url = "https://github.com/RoBaertschi/zigwin32/archive/refs/tags/0.0.1.tar.gz",
             .hash = "1220dea3a489e1603f61242a412edd1ed3f654af6b20c1a1e519b77c22e584b25306",
         },
+        .@"zig-wayland" = .{
+            .url = "https://codeberg.org/ifreund/zig-wayland/archive/next-zig.tar.gz",
+            .hash = "1220bbe0afb97fcb1101ac582849420c50b2c894ab07e4c0b82e36591f7d05a2774a",
+        },
     },
 
     // Specifies the set of files and directories that are included in this package.
